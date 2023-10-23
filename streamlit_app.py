@@ -43,7 +43,7 @@ streamlit.dataframe(my_data_rows)
 
 new_row = streamlit.text_input('What fruit would you like add to the list?')
 streamlit.write('The user entered:', new_row)
-new = {'Column1:', new_row}
+new = {'Column1', new_row}
 final = my_data_rows.append(new,ignore_index=True)
 streamlit.dataframe(final)
 
