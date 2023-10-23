@@ -1,6 +1,7 @@
 import streamlit
 import pandas
 import requests
+import snowflake.connector
 
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣Omega 3 & Blueberry Oatmeal')
@@ -32,7 +33,6 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
 
-import snowflake.connector
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -42,4 +42,11 @@ streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
 new_row = streamlit.text_input('What fruit would you like add to the list?')
+streamlit.write('The user entered:', new_row)
+new = ['Column1:', new_row}
+final = new_row.append(new,ignore_index=True)
+streamlit.dataframe(final)
+
+
+
 
